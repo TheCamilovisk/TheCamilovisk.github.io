@@ -29,8 +29,8 @@ There are two general CF approaches:
 * **User-based**, which exploits similarities between **users**. A rating prediction of an user to an item is computed using the item ratings given by similar users.
 * **Item-based**, which exploits similarities between **items**. A rating prediction of an user to an item is computed using ratings of similar items.
 <figure style="display: block; margin-left: auto; margin-right: auto; width: 90%; text-align: center;">
-  <img src="https://predictivehacks.com/wp-content/uploads/2020/06/recommenders_systems.png" alt="CF approaches.">
-    <figcaption>CF approaches. Image source: <a href="https://predictivehacks.com/wp-content/uploads/2020/06/recommenders_systems.png">https://predictivehacks.com/item-based-collaborative-filtering-in-python/</a></figcaption>
+  <img src="/assets/img/posts/CFRecommenderSystem/CF_approachs.png" alt="CF approaches.">
+    <figcaption>Collaborative Filtering approaches.</figcaption>
 </figure>
 
 In both cases, the first step to build the system is to compute an **interactions matrix**, where each row contains the ratings given by a user to all items in database, and each columns contains the ratings given by all users to an specific item.
