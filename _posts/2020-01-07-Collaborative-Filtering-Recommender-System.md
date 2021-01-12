@@ -4,7 +4,7 @@ date: 2020-01-07 00:08:00 +/-0300
 categories: [Data Science, Recommender Systems]
 tags: [recommender systems, data science, skoptim, collaborative filtering]     # TAG names should always be lowercase
 math: true
-image: http://webindiasolutions.biz/webindiasolutions.co.in/predmac/wp-content/uploads/2019/06/Recommender-systems-1024x628.jpg
+image: /assets/img/posts/CFRecommenderSystem/recommender_systems.png
 ---
 Recommender systems are one of the most successful and widespread application of machine learning technologies in industry. The ability to suggest products with most appealing factor to each consumer type of your clients base is trivial not only to keep your clients engaged, but to atract new costumers. The business model and success of big companys like Netflix, Amazon, Steam, Spotify, YouTube and many others, revolves around the potency of their *Recommender Systems*.
 
