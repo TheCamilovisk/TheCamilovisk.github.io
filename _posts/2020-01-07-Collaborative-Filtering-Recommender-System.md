@@ -1186,7 +1186,7 @@ But nothing in this world is perfect, and this approach suffers from disadvantag
 * **Adding new items becomes more complicated:** since the data sctructures representations as an interactions matrix relies on a specific *vector space*, adding new items requires inclusion of the new item and the re-insertion of all elements in the structure.
 * **Recommendations tend to be already popular:** items from the so-called [long-tail](https://en.wikipedia.org/wiki/Long_tail) section might get ignored.
 
-The notebook of this post can found [here](https://github.com/TheCamilovisk/DSNotebooks/blob/main/RecommenderSystems/CollaborativeFiltering.ipynb).
+The notebook of this post can found [here](https://github.com/TheCamilovisk/DSNotebooks/blob/main/RecommenderSystems/CollaborativeFilteringMemoryBased.ipynb).
 
 A great thanks to [Ethan Rosenthal](https://www.ethanrosenthal.com/#), the author of the [blog post](https://www.ethanrosenthal.com/2015/11/02/intro-to-collaborative-filtering/) which of the ideas and concepts presented here were based on.
 
