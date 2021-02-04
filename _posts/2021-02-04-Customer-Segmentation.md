@@ -4,7 +4,7 @@ date: 2021-02-04 19:38:00 +/-0300
 categories: [Data Science, Customer Segmentation]
 tags: [customer segmentation, data science, machine learning, sklearn, clustering, kmeans, elbow method, silhouette coefficient, optimal clustering]     # TAG names should always be lowercase
 math: true
-image: https://www.medgadget.com/wp-content/uploads/2019/12/Population-Health-Management-Market-Size.jpg
+image: https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/CustomerSegmentation.jpg
 ---
 In my last [post](https://thecamilovisk.github.io/posts/Collaborative-Filtering-Recommender-System/) we hade a brief discussion about  Recommender Systems, one of the most widespread application of machine learning technology in industry. In this post we'll talk about Customer Segmentation, another essential machine learning task used by companies to get insights about their clients base, like their needs, which groups should marketing programs be focused on, what preferences these groups have, how to engage new clients and so on.
 
