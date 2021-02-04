@@ -1,6 +1,6 @@
 ---
 title: Customer Segmentation in Python
-date: 2021-02-04 00:08:00 +/-0300
+date: 2021-02-04 19:38:00 +/-0300
 categories: [Data Science, Customer Segmentation]
 tags: [customer segmentation, data science, machine learning, sklearn, clustering, kmeans, elbow method, silhouette coefficient, optimal clustering]     # TAG names should always be lowercase
 math: true
