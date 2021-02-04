@@ -8,7 +8,7 @@ image: https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/m
 ---
 In my last [post](https://thecamilovisk.github.io/posts/Collaborative-Filtering-Recommender-System/) we hade a brief discussion about  Recommender Systems, one of the most widespread application of machine learning technology in industry. In this post we'll talk about Customer Segmentation, another essential machine learning task used by companies to get insights about their clients base, like their needs, which groups should marketing programs be focused on, what preferences these groups have, how to engage new clients and so on.
 
-## Required packages
+# Required packages
 
 - Numpy
 - Pandas
@@ -17,7 +17,7 @@ In my last [post](https://thecamilovisk.github.io/posts/Collaborative-Filtering-
 - Seaborn
 - Kaggle API (optional)
 
-## What is Customer Segmentation and why to use it?
+# What is Customer Segmentation and why to use it?
 
 Customer Segmentation is the process of dividing customers into groups based on common characteristics. A company might segment customers according to a wide range of factors: age, gender, marital status, purchase history, location (urban, suburban, rural), etc. Segmentation allows marketers to better tailor their marketing efforts to various audience subsets. Those efforts can relate to both communications and product development. Specifically, segmentation helps a company:
 
@@ -31,7 +31,7 @@ Customer Segmentation is the process of dividing customers into groups based on 
 
 Companies employing customer segmentation operate under the fact that every customer is different and that their marketing efforts would be better served if they target specific, smaller groups with messages that those consumers would find relevant and lead them to buy something. Companies also hope to gain a deeper understanding of their customer's preferences and needs with the idea of discovering what each segment finds most valuable to more accurately tailor marketing materials toward that segment.
 
-## Dataset Description
+# Dataset Description
 
 For this project we'll use the [Mall Custumer Segmentation Data](https://www.kaggle.com/vjchoudhary7/customer-segmentation-tutorial-in-python), a dataset created with the sole purpose of learning the concepts of Customer Segmentation using Machine Learning.
 
@@ -43,7 +43,7 @@ The data is composed by the following variables:
 - **Annual Income (R$)**: Annual Income of the customer
 - **Spending score (1-100)**: Score assigned by the mall based on the customer behavior and spending nature.
 
-## Exploratory Data Analysis
+# Exploratory Data Analysis
 
 Let's begin by downloading our data. Here I'll use the [kaggle API](https://github.com/Kaggle/kaggle-api) package, but you are free to donwload it manually or by other means.
 
@@ -351,7 +351,7 @@ display(customer_data.describe(include="O").T)
 
  As we can see, **Gender** is a nominal variable, while **Age**, **Annual Income (k\\$)** and **Spending Score (1-100)** are numeric continuous variables. We can also note that **Gender** is also a binary variable.
 
-### Gender Distribution
+## Gender Distribution
 
 
 ```python
@@ -375,7 +375,7 @@ plt.tight_layout()
 
 As said before, the "Gender" variable is a **binary** variable, and it's value can be either **Male** of **Female**. One can also note that there are sightly more **Female** entries than **Male**.
 
-### Distribution plots
+## Distribution plots
 
 The following variables are of continuous type, and we'll basically describe then using their histogram, density estimation functions and [violin plots](https://blog.bioturing.com/2018/05/16/5-reasons-you-should-use-a-violin-graph/). We'll create a function that encapsulates the creation of those plots.
 
@@ -410,7 +410,7 @@ distribution_plots(customer_data, "Age", bins=11, color="blue")
 
 As we can see, 50% of the customers have between 28 and 49 years old, and the age average is about 36 years. The younger customer and the older customer have 18 and 70 years old, respectively.
 
-### Annual Icome of the Customers
+## Annual Icome of the Customers
 
 
 ```python
@@ -425,7 +425,7 @@ distribution_plots(customer_data, "Annual Income (k$)", bins=14, color="#660033"
 
 From the descriptive analysis above, we can conclude that 50% of the consumers have annual income between 41,5 K\\$ and 78 K\\$, and the average income is about 61,5 k\\$. The minimum user income is of 15 k\\$ and the maximun is of 137 k\\$.
 
-### Spending Score of the Customers
+## Spending Score of the Customers
 
 
 ```python
@@ -440,7 +440,7 @@ distribution_plots(customer_data, "Spending Score (1-100)", bins=9, color="#6600
 
 50% of the customers have the score between 35 and 73, with the mean score of approximately 50.
 
-## Customer Base Clustering
+# Customer Base Clustering
 
 Gennearally speaking, customer segmentation requires a company to gather specific information/data about customers, analyze it and identify patterns that can be used to create the segments. Typical information-gathering methods include:
 
@@ -451,7 +451,7 @@ Gennearally speaking, customer segmentation requires a company to gather specifi
 
 The gathered data then is analyzed by marketing specialists with the aid of other professionals, like designers, entreperneurs and, of course, data scientists and machine learning practioneers. In this post we'll ignore all complex segmentation stages of a marketing company and focus on an simple machine learning approach using the **k-means clustering algorithm**.
 
-### K-means Algorithm
+## K-means Algorithm
 
 The most common k-means clustering algorithm (a.k.a naïve k-means) is a **unsupervised learning** technique that consists in iterativelly cluster similar data based on the **Euclidian Distance** of each data point, or observations, to its closest cluster centroid. The algorithm aims to minimize the distances between cluster centroids and their assigned observations and maximize inter-cluster distances.
 
@@ -474,7 +474,7 @@ $$
 
 where $$ x_i $$ is the components vector of the $$ i $$-th observation and $$ \mu_j $$ is the centroid of the $$ j $$-th cluster. Inertia can be recognized as a measure of how internally coherent clusters are.
 
-### Determining the Optimal Number of Clusters
+## Determining the Optimal Number of Clusters
 
 Now that we know the basics of k-means clustering, there is one question left: how do we choose the number $$ k $$ of clusters?
 
@@ -485,7 +485,7 @@ In cases where the value of $$ k $$ was not made clear by the business logic, on
 - Elbow method
 - Silhouette method
 
-#### Elbow Method
+### Elbow Method
 
 The elbow method consists in plotting the **inertia** of clusterings for several values of $$ k $$.
 
@@ -536,7 +536,7 @@ plt.show()
 
 We'll choose the value of $$ k $$ clusters which if we add another cluster it doesn't result in a relevant improvement. In our case, the value of **6** clusters satisfy this condition.
 
-#### Average Solhouette Method
+### Average Solhouette Method
 
 The Silhouette method provides a succint graphical representation of how well each observation has been classified.
 
@@ -694,7 +694,9 @@ plt.show()
 
 As we can see, the silhouette plot confirms that the optimal number of clusters is **6**.
 
-### Clustering Visualization
+# Clustering Visualization
+
+## Visualizing in a Reduced Variables Space
 
 As the dataset is composed of 4 variables, it is impossible for us to visulize the clustering in such space. So we need a way to visualize this data in a **reduced space**. For this, we'll used the so called [**Principal Component Analysis**](https://en.wikipedia.org/wiki/Principal_component_analysis) (**PCA**), a statistical technique that decompose a multivariate dataset in a set of **principal components**: successive orthogonal components that explain a maximun amount of the variance. The first principal component can be defined as a direction of maximun variance of the projected data, while the second component can be defined as a direction of the second maximun variance of the projected data, the third component is the direction of the third maximun variance, and so on.
 
@@ -751,7 +753,7 @@ ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left");
 
 As we can see, clusters 0, 1, 2 and 4 are well defined and clusters 3 and 5 are a bit mixed.
 
-## Visualizing variables with high variation
+## Visualizing Variables with High Variation
 
 Although the above plot can show clearly the effect of the clustering, we cannot actually extract an useful information from it. It would be better to see the clustering results using a subset of the original components, but how do we do it?
 
