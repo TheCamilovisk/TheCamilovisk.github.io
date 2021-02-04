@@ -2,7 +2,7 @@
 title: Customer Segmentation in Python
 date: 2021-02-04 00:08:00 +/-0300
 categories: [Data Science, Customer Segmentation]
-tags: [customer segmentation, data science, machine learning, sklearn, clustering, kmeans]     # TAG names should always be lowercase
+tags: [customer segmentation, data science, machine learning, sklearn, clustering, kmeans, elbow method, silhouette coefficient, optimal clustering]     # TAG names should always be lowercase
 math: true
 image: https://www.medgadget.com/wp-content/uploads/2019/12/Population-Health-Management-Market-Size.jpg
 ---
@@ -369,7 +369,7 @@ plt.tight_layout()
 
 
     
-![png](output_14_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_14_0.png)
     
 
 
@@ -404,7 +404,7 @@ distribution_plots(customer_data, "Age", bins=11, color="blue")
 
 
     
-![png](output_19_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_19_0.png)
     
 
 
@@ -419,11 +419,11 @@ distribution_plots(customer_data, "Annual Income (k$)", bins=14, color="#660033"
 
 
     
-![png](output_22_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_22_0.png)
     
 
 
-From the descriptive analysis above, we can conclude that 50% of the consumers have annual income between 41,5K\\$ and 78K\\$, and the average income is about 61,5k\\$. The minimum user income is of 15 k\\$ and the maximun is of 137 k\\$.
+From the descriptive analysis above, we can conclude that 50% of the consumers have annual income between 41,5 K\\$ and 78 K\\$, and the average income is about 61,5 k\\$. The minimum user income is of 15 k\\$ and the maximun is of 137 k\\$.
 
 ### Spending Score of the Customers
 
@@ -434,7 +434,7 @@ distribution_plots(customer_data, "Spending Score (1-100)", bins=9, color="#6600
 
 
     
-![png](output_25_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_25_0.png)
     
 
 
@@ -453,12 +453,12 @@ The gathered data then is analyzed by marketing specialists with the aid of othe
 
 ### K-means Algorithm
 
-The most common k-means clustering algorithm (a.k.a naïve k-means) is a **unsupervised learning** techinique that consists in iterativelly cluster similar data based on the **Euclidian Distance** of each data point, or observations, to its closest cluster centroid. The algorithm aims to minimize the distances between cluster centroids and their assigned observations and maximize inter-cluster distances.
+The most common k-means clustering algorithm (a.k.a naïve k-means) is a **unsupervised learning** technique that consists in iterativelly cluster similar data based on the **Euclidian Distance** of each data point, or observations, to its closest cluster centroid. The algorithm aims to minimize the distances between cluster centroids and their assigned observations and maximize inter-cluster distances.
 
 We can summarize the k-means algorithm as:
 
-1. The number $ k $ of clusters to be created is chosen.
-2. The algorithm randomly choose $ k $ observations as initial cluster centroids.
+1. The number $$ k $$ of clusters to be created is chosen.
+2. The algorithm randomly choose $$ k $$ observations as initial cluster centroids.
 3. The Euclidian Distances between all observations and the cluster centroids are computed.
 4. Each observation is assigned to its closest cluster.
 5. Each cluster centroids are updated with the mean point of all cluster observations.
@@ -466,26 +466,28 @@ We can summarize the k-means algorithm as:
 
 These steps are executed a bunch of times for different initial centroids. The execution that results in *minimum difference of variation between clusters* is chosen as the best one.
 
-The k-means algorithm clusters data by trying to separate samples in $ k $ groups of equal variance, minimizing a criterion know as the **inertia** or **intra-cluster sum-of-squares**, which is mathematically defined as:
+The k-means algorithm clusters data by trying to separate samples in $$ k $$ groups of equal variance, minimizing a criterion know as the **inertia** or **intra-cluster sum-of-squares**, which is mathematically defined as:
+
 $$
-\sum_{i=0}^k \min_{\mu_j \in C} (||x_i - \mu_j||^2)
+\textbf{inertia} = \sum_{i=0}^k \min_{\mu_j \in C} (||x_i - \mu_j||^2)
 $$
-where $ x_i $ is the components vector of the $ i $-th observation and $ \mu_j $ is the centroid of the $ j $-th cluster. Inertia can be recognized as a measure of how internally coherent clusters are.
+
+where $$ x_i $$ is the components vector of the $$ i $$-th observation and $$ \mu_j $$ is the centroid of the $$ j $$-th cluster. Inertia can be recognized as a measure of how internally coherent clusters are.
 
 ### Determining the Optimal Number of Clusters
 
-Now that we know the basics of k-means clustering, there is one question left: how do we choose the number $ k $ of clusters?
+Now that we know the basics of k-means clustering, there is one question left: how do we choose the number $$ k $$ of clusters?
 
-Depending of the problem statement we could set $ k $ to an arbitrary value. For a set of cloth items we could, for example, cluster them into 3 groups by their sizes: Big, Medium and Small.
+Depending of the problem statement we could set $$ k $$ to an arbitrary value. For a set of cloth items we could, for example, cluster them into 3 groups by their sizes: Big, Medium and Small.
 
-In cases where the value of $ k $ was not made clear by the business logic, one can use a value search method. In this post we'll present two of the most popular:
+In cases where the value of $$ k $$ was not made clear by the business logic, one can use a value search method. In this post we'll present two of the most popular:
 
 - Elbow method
 - Silhouette method
 
 #### Elbow Method
 
-The elbow method consists in plotting the **inertia** of clusterings for several values of $ k $.
+The elbow method consists in plotting the **inertia** of clusterings for several values of $$ k $$.
 
 
 ```python
@@ -528,23 +530,25 @@ plt.show()
 
 
     
-![png](output_36_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_36_0.png)
     
 
 
-We'll choose the value of $ k $ clusters which if we add another cluster it doesn't result in a relevant improvement. In our case, the value of **6** clusters satisfy this condition.
+We'll choose the value of $$ k $$ clusters which if we add another cluster it doesn't result in a relevant improvement. In our case, the value of **6** clusters satisfy this condition.
 
 #### Average Solhouette Method
 
 The Silhouette method provides a succint graphical representation of how well each observation has been classified.
 
-The silhouette coefficient is defined as:
-$$
-s = \frac{b - a}{max(a, b)}
-$$
-where $ a $ is the means distance between a sample and all other observations in the same class, and $ b $ is the mean distance between a sample and all other observations in the next nearest cluster. The silhouette coefficient is a measure of how similar an observation is to its own cluster compared to other clusters. It ranges from -1 to +1, where a high values indicates that the observation is well matched to its own cluster and poorly matched to neighboring clusters.
+The silhouette coefficient **s** is defined as:
 
-Our approach will be simple: we'll compute the average silhouette coefficient of several clustering strategies using different $ k $ values. Gennerally speaking, if we obtain a high average value it means that we have good clustering.
+$$
+\textbf{s} = \frac{b - a}{max(a, b)}
+$$
+
+where $$ a $$ is the means distance between a sample and all other observations in the same class, and $$ b $$ is the mean distance between a sample and all other observations in the next nearest cluster. The silhouette coefficient is a measure of how similar an observation is to its own cluster compared to other clusters. It ranges from -1 to +1, where a high values indicates that the observation is well matched to its own cluster and poorly matched to neighboring clusters.
+
+Our approach will be simple: we'll compute the average silhouette coefficient of several clustering strategies using different values of $$ k $$. Gennerally speaking, if we obtain a high average silhouette coefficient value it means that we have good clustering.
 
 
 ```python
@@ -617,55 +621,55 @@ silhouette_avgs = np.array(silhouette_avgs)
 
 
     
-![png](output_42_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_0.png)
     
 
 
 
     
-![png](output_42_1.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_1.png)
     
 
 
 
     
-![png](output_42_2.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_2.png)
     
 
 
 
     
-![png](output_42_3.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_3.png)
     
 
 
 
     
-![png](output_42_4.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_4.png)
     
 
 
 
     
-![png](output_42_5.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_5.png)
     
 
 
 
     
-![png](output_42_6.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_6.png)
     
 
 
 
     
-![png](output_42_7.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_7.png)
     
 
 
 
     
-![png](output_42_8.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_42_8.png)
     
 
 
@@ -684,7 +688,7 @@ plt.show()
 
 
     
-![png](output_44_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_44_0.png)
     
 
 
@@ -692,7 +696,7 @@ As we can see, the silhouette plot confirms that the optimal number of clusters 
 
 ### Clustering Visualization
 
-As the dataset is composed of 4 variables, it is impossible for us to visulize the clustering in such space. So we need a way to visualize this data in a **reduced space**. For this, we'll used the so called **Principal Component Analysis** (**PCA**), a statistical technique that decompose a multivariate dataset in a set of **principal components**: successive orthogonal components that explain a maximun amount of the variance. The first principal component can be defined as a direction of maximun variance of the projected data, while the second component can be defined as a direction of the second maximun variance of the projected data, the third component is the direction of the third maximun variance, and so on.
+As the dataset is composed of 4 variables, it is impossible for us to visulize the clustering in such space. So we need a way to visualize this data in a **reduced space**. For this, we'll used the so called [**Principal Component Analysis**](https://en.wikipedia.org/wiki/Principal_component_analysis) (**PCA**), a statistical technique that decompose a multivariate dataset in a set of **principal components**: successive orthogonal components that explain a maximun amount of the variance. The first principal component can be defined as a direction of maximun variance of the projected data, while the second component can be defined as a direction of the second maximun variance of the projected data, the third component is the direction of the third maximun variance, and so on.
 
 First, we compute the optimal clustering.
 
@@ -741,7 +745,7 @@ ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left");
 
 
     
-![png](output_51_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_51_0.png)
     
 
 
@@ -788,11 +792,11 @@ plt.title("Feature variation amount");
 
 
     
-![png](output_58_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_58_0.png)
     
 
 
-As we can see, "Spending Score (1-100)" and "Annual Income (k$)" are the variables that holds most of the information in dataset. We can visualize the clustering results using only those variables.
+As we can see, **Spending Score (1-100)** and **Annual Income (k$)** are the variables that holds most of the information in dataset. We can visualize the clustering results using only those variables.
 
 
 ```python
@@ -806,7 +810,7 @@ ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left");
 
 
     
-![png](output_60_0.png)
+![png](https://raw.githubusercontent.com/TheCamilovisk/TheCamilovisk.github.io/master/assets/img/posts/CustomerSegmentation/output_60_0.png)
     
 
 
