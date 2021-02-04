@@ -1,6 +1,6 @@
 ---
 title: Collaborative Filtering based Recommender System
-date: 2020-01-07 00:08:00 +/-0300
+date: 2021-01-07 00:08:00 +/-0300
 categories: [Data Science, Recommender Systems]
 tags: [recommender systems, data science, skoptim, collaborative filtering]     # TAG names should always be lowercase
 math: true
